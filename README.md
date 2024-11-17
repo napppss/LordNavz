@@ -9,6 +9,15 @@
 ![](https://github-readme-streak-stats.herokuapp.com/?user=Nappz&theme=nightowl&hide_border=false)<br/>
 ![](https://github-readme-stats.vercel.app/api/top-langs/?username=Nappz&theme=nightowl&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
 
+<div align="center">
+            <a href="https://www.buymeacoffee.com/rishavanand" target="_blank" style="display: inline-block;">
+                <img
+                    src="https://img.shields.io/badge/Donate-Buy%20Me%20A%20Coffee-orange.svg?style=flat-square&logo=buymeacoffee" 
+                    align="center"
+                />
+            </a></div>
+<br />
+
 ---
 [![](https://visitcount.itsvg.in/api?id=Nappz&icon=7&color=0)](https://visitcount.itsvg.in)
 
