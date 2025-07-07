@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viex Cloud - Panel Bot WhatsApp</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Viex Cloud</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navMenu">
+      <a href="/">Beranda</a>
+      <a href="/hostingmc">Hosting MC</a>
+      <a href="/panelwa">Panel Bot</a>
+      <a href="/vps">Vps</a>
+      <a href="/setup">Setup</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Panel Bot WhatsApp</h2>
+    <p>Viex Cloud Spek Gahar, Harga Hemat!</p>
+  </section>
+
+  <section class="hosting-types">
+    <h2>Pilihan Paket Panel</h2>
+    <div class="hosting-container">
+      
+      <!-- BASIC -->
+      <div class="hosting-box">
+        <h3>BASIC</h3>
+        <div class="package-list">
+          <div class="package-item" onclick="selectPackage('1GB', '5000', '1GB', '5GB SSD', '100%')">
+            <h4>1GB</h4>
+            <p>RAM: 1GB</p>
+            <p>DISK: 5GB SSD</p>
+            <p>CPU: 100%</p>
+            <p>Harga: Rp 2.000</p>
+          </div>
+
+          <div class="package-item" onclick="selectPackage('2GB', '4000', '2GB', '8GB SSD', '100%')">
+            <h4>2GB</h4>
+            <p>RAM: 2GB</p>
+            <p>DISK: 8GB SSD</p>
+            <p>CPU: 100%</p>
+            <p>Harga: Rp 4.000</p>
+          </div>
+
+          <div class="package-item" onclick="selectPackage('3GB', '6000', '3GB', '11GB SSD', '100%')">
+            <h4>3GB</h4>
+            <p>RAM: 3GB</p>
+            <p>DISK: 11GB SSD</p>
+            <p>CPU: 100%</p>
+            <p>Harga: Rp 6.000</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MIDDLE -->
+      <div class="hosting-box">
+        <h3>MIDDLE</h3>
+        <div class="package-list">
+          <div class="package-item" onclick="selectPackage('4GB', '8000', '4GB', '14GB SSD', '100%')">
+            <h4>4GB</h4>
+            <p>RAM: 4GB</p>
+            <p>DISK: 14GB SSD</p>
+            <p>CPU: 100%</p>
+            <p>Harga: Rp 8.000</p>
+          </div>
+
+          <div class="package-item" onclick="selectPackage('5GB', '10000', '5GB', '17GB SSD', '100%')">
+            <h4>5GB</h4>
+            <p>RAM: 5GB</p>
+            <p>DISK: 17GB SSD</p>
+            <p>CPU: 100%</p>
+            <p>Harga: Rp 10.000</p>
+          </div>
+
+          <div class="package-item" onclick="selectPackage('6GB', '12000', '6GB', '20GB SSD', '100%')">
+            <h4>6GB</h4>
+            <p>RAM: 6GB</p>
+            <p>DISK: 20GB SSD</p>
+            <p>CPU: 100%</p>
+            <p>Harga: Rp 12.000</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HIGH -->
+      <div class="hosting-box">
+        <h3>HIGH</h3>
+        <div class="package-list">
+          <div class="package-item" onclick="selectPackage('7GB', '14000', '7GB', '23GB SSD', '100%')">
+            <h4>7GB</h4>
+            <p>RAM: 7GB</p>
+            <p>DISK: 23GB SSD</p>
+            <p>CPU: 100%</p>
+            <p>Harga: Rp 14.000</p>
+          </div>
+
+          <div class="package-item premium-blink" onclick="selectPackage('Unlimited', '15000', '∞ GB', '∞ SSD', '∞')">
+            <h4>Unlimited</h4>
+            <p>RAM: ∞</p>
+            <p>DISK: ∞ SSD</p>
+            <p>CPU: ∞</p>
+            <p>Harga: Rp 15.000</p>
+            <div class="premium-badge">PREMIUM</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="order-form">
+    <h2>Ringkasan Pesanan</h2>
+    <div class="package-details">
+      <h3>Paket Terpilih:</h3>
+      <p>Nama: <span id="selectedPackage">-</span></p>
+      <p>RAM: <span id="ram">-</span></p>
+      <p>Disk: <span id="disk">-</span></p>
+      <p>CPU: <span id="cpu">-</span></p>
+      <p style="font-size: 1.2rem; font-weight: bold; color: #1a1a1a;">
+        Total Harga: <span id="totalPrice" style="color: #0066cc;">Rp 0</span>
+      </p>
+    </div>
+    <button onclick="sendOrder()">Pesan via WhatsApp</button>
+  </section>
+
+  <footer>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Viex Cloud. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    let selectedPackage = {
+      name: '',
+      price: '0',
+      ram: '',
+      disk: '',
+      cpu: ''
+    };
+
+    function selectPackage(name, price, ram, disk, cpu) {
+      selectedPackage = { name, price, ram, disk, cpu };
+      document.getElementById('selectedPackage').textContent = name;
+      document.getElementById('ram').textContent = ram;
+      document.getElementById('disk').textContent = disk;
+      document.getElementById('cpu').textContent = cpu;
+      document.getElementById('totalPrice').textContent = `Rp ${price}`;
+      document.querySelector('.order-form').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleMenu() {
+      document.getElementById('navMenu').classList.toggle('show');
+    }
+
+    function sendOrder() {
+      if (!selectedPackage.name) {
+        alert('Silakan pilih paket terlebih dahulu!');
+        return;
+      }
+
+      const sellerPhone = '6285959314711';
+      const message =
+        `Halo min, saya ingin memesan hosting/panel.\n\n` +
+        `*Detail Server:*\n` +
+        `   *Paket Hosting:* ${selectedPackage.name}\n` +
+        `   *RAM:* ${selectedPackage.ram}\n` +
+        `   *Disk:* ${selectedPackage.disk}\n` +
+        `   *CPU:* ${selectedPackage.cpu}\n` +
+        `   *Harga:* Rp ${selectedPackage.price}\n\n` +
+        `*Pertanyaan:*\nSaya ingin memesan hosting ini. Bagaimana proses selanjutnya?`;
+
+      window.location.href = `https://wa.me/${sellerPhone}?text=${encodeURIComponent(message)}`;
+    }
+
+    window.onload = function () {
+      document.querySelectorAll('.package-item').forEach(item => {
+        item.addEventListener('click', function () {
+          this.style.animation = 'none';
+          void this.offsetWidth;
+          this.style.animation = 'fadeIn 0.5s ease-out';
+        });
+      });
+    };
+  </script>
+</body>
+</html>

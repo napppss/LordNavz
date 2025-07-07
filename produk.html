@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Produk - Specy Shop</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+
+<a href="https://wa.me/6281234567890" class="wa-float" target="_blank" rel="noopener noreferrer" aria-label="Chat via WhatsApp">
+  <img src="https://img.icons8.com/?size=100&id=16712&format=png&color=FFFFFF" alt="WhatsApp Icon" class="wa-icon">
+</a>
+
+<script>
+  const hostingContainer = document.getElementById("hostingPlans");
+  const produk = JSON.parse(localStorage.getItem("produk")) || [];
+
+  if (produk.length === 0) {
+    hostingContainer.innerHTML = `<p style="text-align:center;">Belum ada produk tersedia.</p>`;
+  } else {
+    produk.forEach(item => {
+      const box = document.createElement("div");
+      box.className = "hosting-box";
+      box.innerHTML = `
+        <h3><i class="fas fa-box"></i> ${item.name}</h3>
+        <div class="price">Rp ${parseInt(item.price).toLocaleString()}<span>/${item.periode || 'sekali'}</span></div>
+        <p>${item.desc}</p>
+        <ul>
+          <li><strong>ID Produk:</strong> ${item.id || 'N/A'}</li>
+          <li><strong>Kategori:</strong> ${item.kategori || 'Umum'}</li>
+        </ul>
+        <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20pesan%20${encodeURIComponent(item.name)}" target="_blank" class="btn btn-primary">Pesan Sekarang</a>
+      `;
+      hostingContainer.appendChild(box);
+    });
+  }
+</script>
+
+  <!-- Header -->
+  <header>
+    <h1>
+      <img class="logo" src="https://files.catbox.moe/ysnapu.png" alt="Logo">
+      <span class="text-with-line">PECY SHOP</span>
+    </h1>
+
+    <div id="menu-toggle" class="menu-toggle">☰</div>
+
+    <nav id="navMenu">
+      <a href="/">Beranda</a>
+      <a href="/hostingmc">Hosting MC</a>
+      <a href="/panelwa">Panel Bot</a>
+      <a href="/vps">VPS</a>
+      <a href="/setup">Setup</a>
+    </nav>
+  </header>
+
+  <!-- Produk Section -->
+    <section class="hosting-types" id="hosting">
+        <div class="container">
+            <div class="section-title">
+                <h2>Solusi Hosting Terbaik untuk Kebutuhan Anda</h2>
+                <p class="section-subtitle">Pilih layanan yang sesuai dengan kebutuhan bot anda</p>
+            </div>
+            <div class="hosting-container" id="hostingPlans">
+                <div class="hosting-box">
+                    <h3><i class="fas fa-lock"></i> Private Hosting</h3>
+                    <div class="price">Rp49.000<span>/bulan</span></div>
+                    <p>Server pribadi eksklusif untuk Anda dan teman-teman dengan kontrol penuh.</p>
+                    <ul>
+                        <li>RAM 2GB DDR4</li>
+                        <li>CPU 2 Core</li>
+                        <li>SSD 10GB</li>
+                        <li>Slot 10 Pemain</li>
+                        <li>DDoS Protection</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Pesan Sekarang</a>
+                </div>
+                <div class="hosting-box">
+                    <h3><i class="fas fa-globe"></i> Public Hosting</h3>
+                    <div class="price">Rp89.000<span>/bulan</span></div>
+                    <p>Server publik dengan performa optimal untuk komunitas besar.</p>
+                    <ul>
+                        <li>RAM 4GB DDR4</li>
+                        <li>CPU 4 Core</li>
+                        <li>SSD 20GB</li>
+                        <li>Slot 50 Pemain</li>
+                        <li>DDoS Protection</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Pesan Sekarang</a>
+                </div>
+                <div class="hosting-box">
+                    <h3><i class="fas fa-rocket"></i> VPS Premium</h3>
+                    <div class="price">Rp149.000<span>/bulan</span></div>
+                    <p>Virtual Private Server dengan akses root penuh dan sumber daya dedicated.</p>
+                    <ul>
+                        <li>RAM 8GB DDR4</li>
+                        <li>CPU 4 Core</li>
+                        <li>SSD NVMe 50GB</li>
+                        <li>1Gbps Port</li>
+                        <li>Full Root Access</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-container">
+
+      <div class="footer-section">
+        <h3><i class="fas fa-info-circle"></i> Tentang Kami</h3>
+        <p class="footer-content">
+          <strong>Specy Shop</strong> adalah penyedia hosting game dan VPS premium dengan infrastruktur terbaik di Indonesia, didukung oleh tim ahli yang berpengalaman.
+        </p>
+
+      <div class="footer-section">
+        <h3><i class="fas fa-headset"></i> Kontak Kami</h3>
+        <p class="footer-content"><i class="fas fa-envelope"></i> support@specyshop.com</p>
+        <p class="footer-content"><i class="fa-brands fa-whatsapp"></i> +62 812-3456-7890</p>
+        <p class="footer-content"><i class="fas fa-map-marker-alt"></i> Semarang, Indonesia</p>
+        <p class="footer-content"><i class="fas fa-clock"></i> Support 24/7</p>
+      </div>
+
+    <!-- Newsletter -->
+<div class="footer-section">
+  <h3><i class="fas fa-newspaper"></i> Channel WhatsApp</h3>
+  <p class="footer-content">
+    Dapatkan info promo dan update produk langsung dari channel WhatsApp kami.
+  </p>
+<a href="https://whatsapp.com/channel/your-channel-id" target="_blank" class="newsletter-btn">
+  <i class="fa-brands fa-whatsapp"></i> Gabung Channel
+</a>
+</div>
+
+    <div class="footer-bottom">
+      <p>
+        2025 Specy Shop. All Rights Reserved.
+        | <a href="/terms">Syarat & Ketentuan</a>
+        | <a href="/privacy">Kebijakan Privasi</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
